@@ -1,16 +1,11 @@
 <script setup>
- import { useMapStore } from "./store/map";
-
- const {map} = useMapStore();
+import Game from "./components/game/Game.vue"
 </script>
 
 <template>
-  <div class="bg-red-500">
-   {{ map }}
+  <div>
+    <Game></Game>
   </div>
- 
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
