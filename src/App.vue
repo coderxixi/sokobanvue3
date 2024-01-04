@@ -1,26 +1,16 @@
-<script setup lang="ts">
+<script setup>
+ import { useMapStore } from "./store/map";
 
+ const {map} = useMapStore();
 </script>
 
 <template>
-  <div>
-     <!-- <Game></Game> -->
-      <router-view></router-view>
+  <div class="bg-red-500">
+   {{ map }}
   </div>
  
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
