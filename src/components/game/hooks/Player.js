@@ -1,4 +1,4 @@
-import { ref, computed } from "vue"; 
+import { ref, computed,onMounted,onUnmounted } from "vue"; 
 import { usePlayerStore } from "../../../store/player";
 //玩家位置逻辑
  export function usePosition() {
@@ -37,6 +37,11 @@ export function useMove() {
     }
   }
 
+  onMounted(()=>{
+    window.addEventListener('keydown', handleKeyDown)
 
-  window.addEventListener('keydown', handleKeyDown)
+  })
+  onUnmounted(()=>{
+    window.removeEventListener('keydown', handleKeyDown)
+  })
 }
