@@ -1,12 +1,20 @@
 import { it, describe, expect, beforeEach } from "vitest";
 import { usePlayerStore } from "../player";
 import { setActivePinia, createPinia } from "pinia"
+import { useMapStore } from "../map";
 
 describe('player', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
   it('sholud move to left', () => {
+
+   const {map,setupMap}=useMapStore()
+    setupMap([
+      [2, 2, 2],
+      [2, 2, 2],
+      [2, 2, 2]
+  ])
     const { movePlayerToLeft, player } = usePlayerStore();
     player.x = 1;
     player.y = 1;
@@ -36,5 +44,13 @@ describe('player', () => {
     player.y = 1;
     movePlayerToDown();
     expect(player.y).toBe(2);
+  })
+
+  it('should not move to left when collision wall',()=>{
+    const { movePlayerToLeft, player } = usePlayerStore();
+    player.x = 1;
+    player.y = 1;
+    movePlayerToLeft();
+    expect(player.x).toBe(1);
   })
 })
